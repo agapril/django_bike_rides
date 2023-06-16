@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} List of organised bike rallies{% endblock %}
+
+{% block content %}
+
+<form method="post">
+  <table>
+    {{ form }}
+  </table>
+    {% csrf_token %}
+  <input type="submit" value="Dodaj/Zmień" />
+</form>
+{% endblock %}

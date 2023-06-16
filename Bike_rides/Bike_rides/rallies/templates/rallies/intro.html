@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} Bike rallies {% endblock %}
+
+
+
+{% block content %}
+<p>Welcome to the site for cycling enthusiasts</p>
+<p> If you want to find some rally to join go to <a href="{% url 'rallies:list' %}">rallies list site</a></p>
+<p> If you want to find extra options for registered user <a href="{% url 'rides:list' %}">go here</a></p> or <a href="{% url 'rides:upload_file' %}">here</a></p>
+{% endblock %}

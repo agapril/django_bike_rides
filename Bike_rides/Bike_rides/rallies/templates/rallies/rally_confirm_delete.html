@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} Bike rallies {% endblock %}
+
+{% block content %}
+<p>Are you sure?</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

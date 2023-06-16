@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} Bike rallies {% endblock %}
+
+{% block content %}
+<p>List of organised bike rallies</p>
+
+<p>Congratulations you signed to rally, below you can find the details:</p>
+<table>
+
+  <tr><td>Description</td>
+    <td>Place</td>
+    <td>Date</td>
+
+  </tr>
+
+  <tr>
+    <td> {{ rally.description }}</td>
+    <td> {{ rally.place }}</td>
+    <td> {{ rally.date }}</td>
+  </tr>
+
+</table>
+<p> Remember to take some water and sun protection </p>
+
+<p><button><a href="{% url 'rallies:list' %}">Go to list</a></button></p>
+
+{% endblock %}

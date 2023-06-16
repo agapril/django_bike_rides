@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet" />
+    {% block css %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!--<div class="w3-top">-->
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+<!--      <li class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home"></i> Home</li>-->
+      <a href="{% url 'rallies:home' %}" class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home"></i> Home</li></a>
+    <div class="w3-dropdown-hover w3-hide-small">
+              <button class="w3-padding-large w3-button" title="More">RALLIES <i class="fa fa-caret-down"></i></button>
+              <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="{% url 'rallies:list' %}" class="w3-bar-item w3-button">LIST OF EVENTS </a>
+                <a href="{% url 'rallies:rally_register' %}" class="w3-bar-item w3-button">REGISTER FORM </a>
+              </div>
+            </div>
+<!--      <a href="{% url 'rallies:list' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RALLIES</a>-->
+        {% if user.is_authenticated %}
+
+              <div class="w3-dropdown-hover w3-hide-small">
+              <button class="w3-padding-large w3-button" title="More">RIDES <i class="fa fa-caret-down"></i></button>
+              <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="{% url 'rides:list' %}" class="w3-bar-item w3-button">MY RIDES</a>
+                <a href="{% url 'rides:upload_file' %}" class="w3-bar-item w3-button">UPLOAD FILE</a>
+              </div>
+            </div>
+
+            <div class="w3-right w3-hide-small">
+            <a href="{% url 'logout' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-padding-large">LOGOUT</a>
+            <a class="w3-bar-item w3-button w3-padding-large">User: {{ user.get_username }}</a>
+            </div>
+        {% else %}
+                <div class="w3-right w3-hide-small">
+                <a href="{% url 'login' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-padding-large">LOGIN</a>
+                </div>
+        {% endif %}
+  </div>
+
+<header class="w3-container w3-white w3-middle"><h1>{% block header %}{% endblock %}</h1></header>
+
+
+{% block content %} {% endblock %}
+<footer><p>{% block footer %}{% endblock %}</p></footer>
+</body>
+</html>

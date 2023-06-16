@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} Bike rallies {% endblock %}
+
+{% block content %}
+<p>List of organised bike rallies</p>
+
+<table>
+  <tr><td>Date</td>
+    <td>Place</td>
+    <td>Level</td>
+    <td>Description</td>
+  </tr>
+
+    <tr>
+      <td> {{ rally.date }}</td>
+      <td> {{ rally.place }}</td>
+      <td> {{ rally.level }}</td>
+      <td> {{ rally.description }}</td>
+    </tr>
+
+</table>
+
+{% endblock %}

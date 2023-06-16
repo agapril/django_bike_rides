@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Rallies {% endblock %}
+{% block header %} List of planned bike rallies {% endblock %}
+
+
+{% block content %}
+
+<table>
+  <tr><td>Date</td>
+    <td>Description</td>
+  </tr>
+  {% for rally in object_list %}
+    <tr>
+      <td> {{ rally.date }}</td>
+      <td> {{ rally.description }}</td>
+      {% if user.is_authenticated %}
+      <td>
+        {% if perms.rally.update %}
+        <a href="{% url 'rallies:update' rally.pk %}">Update</a>
+        {% endif %}
+        {% if perms.rally.delete %}
+        <a href="{% url 'rallies:delete' rally.pk %}">Delete</a>
+        {% endif %}
+        <a href="{% url 'rallies:detail' rally.pk %}">See more</a>
+<!--        {% if flag %}-->
+<!--        <button><a href="/rallies/confirmed/" >Join</a></button>-->
+        <button><a href="{% url 'rallies:rally_confirmed' rally.pk %}" >Join</a></button>
+<!--        {% endif %}-->
+      </td>
+      {% endif %}
+    </tr>
+  {% empty %}
+  <tr><td colspan="4">Brak zaplanowanych zdarzen</td></tr>
+  {% endfor %}
+</table>
+{% if user.is_authenticated %}
+<p><a href="{% url 'rallies:create' %}">Add rally</a></p>
+{% endif %}
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}">Next</a>
+{% endif %}
+
+
+{% endblock %}

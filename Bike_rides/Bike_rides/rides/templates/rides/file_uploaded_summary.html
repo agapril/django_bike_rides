@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Rides {% endblock %}
+{% block header %} Bike rides {% endblock %}
+
+{% block content %}
+<p>GPX file upload successful</p>
+<table>
+  <tr>
+      <td>Name</td>
+      <td>Start date</td>
+      <td>Total time [sec]</td>
+      <td>Moving time [sec]</td>
+      <td>Total distance</td>
+      <td>Max speed</td>
+
+  </tr>
+
+    <tr>
+        <td> {{ ride.name }}</td>
+        <td> {{ ride.start_date }}</td>
+        <td> {{ ride.total_time }}</td>
+        <td> {{ ride.moving_time }}</td>
+        <td> {{ ride.distance }}</td>
+        <td> {{ ride.max_speed }}</td>
+
+
+
+    </tr>
+
+<p>Congratulations your file uploaded successfully</p>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Form{% endblock %}
+{% block header %}Participate in bike rally - registration form{% endblock %}
+{% block content %}
+
+{% if data %}
+    <p>Thanks for your registration</p>
+    <p>{{ data }}</p>
+{% else %}
+    <form method="post">
+        <table>{{ form }}</table>
+        {% csrf_token %}
+        <input type="submit" value="Send registration form" />
+    </form>
+{% endif %}
+
+{% endblock %}
+
